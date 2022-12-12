@@ -1,0 +1,4 @@
+nmap <ip> -sV -p 80 --script http-enum
+nmap <ip> -sV -p 80 --script http-headers
+nmap <ip> -sV -p 80 --script http-methods --script-args http-methods.url-path=/example/
+nmap <ip> -sV -p 80 --script http-webdav-scan --script-args http-methods.url-path=/example/
