@@ -1,0 +1,9 @@
+ssh root@<ip>
+nmap <ip> -p 22 --script ssh2-enum-algos
+nmap <ip> -p 22 --script ssh-hostkey --script-args ssh_hostkey=full
+nmap <ip> -p 22 --script ssh-auth-methods --script-args="ssh.user=example"
+hydra -l <username> -P <username file wordlist> <ip> <protocol such as ssh>
+** if you have a custom username you'd like to try and crack you can make your own wordlist **
+echo "exampleuser" > user
+nmap <ip> -p 22 --script ssh-brute --script-args userdb=/root/userwordlist
+MSFConsole can also be used with scanner/ssh/ssh_login
