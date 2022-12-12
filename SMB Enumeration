@@ -1,0 +1,21 @@
+nmap <ip> -p 445 --script smb-os-discovery
+nmap <ip> -p 445 --script smb-protocols
+nmap <ip> -p 445 --script smb-enum-users
+nmap <ip> -p 445 --script smb-enum-shares
+nmblookup -A <ip> 
+smbclient -L <ip> -N (for null) or -U (to login as a user)
+smbclient //<ip>/ -N (for null) or -U (to login as a user)
+rpcclient -U "" -N <ip>
+enum4linux -o <ip> (OS Information)
+enum4linux -u <ip> (User List)
+enum4linux -G <ip> (Group List)
+enum4linux -r -u "username" -p "password" <ip> (gets user SID's)
+https://highon.coffee/blog/enum4linux-cheat-sheet/
+get <file> 
+
+use auxiliary/scanner/smb/login (make sure to set rhosts, smbuser and pass_file)
+use auxiliary/scanner/smb/pipe_auditor (for things that use SMB as well)
+gzip -d <filename>
+tar -xf <file.tar.gz>
+hydra -l <username> -P <password file list> <ip> <protocol such as smb>
+smbmap -H <ip> -u <username> -p <password>
