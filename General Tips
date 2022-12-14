@@ -1,0 +1,10 @@
+Once you compromise a box, cat the /etc/hosts file or it's equivalent to find other hosts.
+You can do a full port scan, do not hurry, labs might have had some ports without a full scan you would have missed.
+T5 speed on nmap omits some ports, I think sticking to T4 or less is wise.
+For web: After you get some creds, try to pipe them into gobuster for an authenticated traversal.
+If nmap's service version scan (-sV) is of no help, grab the banner with nc
+If SQLi does not work right away, try appending commands instead of using a boolean:
+Instead of page?id=21' or 1=1 -- -, insert the next statement directly, page?id=21 AND SELECT ...
+Let gobuster run for a while, and run dirb as well and have it run for a while too, in case one of them does not catch a directory.
+Again, seriously do not hurry and miss things out.
+Enumerate! Enumerate! Enumerate! Everything. Every directory, file, if you get stuck.
