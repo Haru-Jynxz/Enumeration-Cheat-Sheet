@@ -1,8 +1,21 @@
 nmap -T4 -PA -sC -sV -p 1-10000 <ip> -oX (file name) this will scan and output the results to a file, then you can import this file to msfconsole for a comprehensive view 
-
+nmap -sV -sC -p <specify port like 21 for ftp etc, leave out for default range or do -p- for all ports> 
 nmap -sU for UDP ports
 
 nc -nv <IP> is good if you dont get any service info in your NMAP scan you can try to grab the banner manually 
 nmap -sV --script=banner <ip> 
 Manual banner grabbing is also used for when you have a bind shell set up on the target
+
+To narrow down brute force attacks you can do a scan of smtp port 25 to potentially gain a list of user names to brute force against, this is an
+available MSFconsole module
+
+user auxiliary/smtp/smtp_enum
+set rhosts
+run
+
+**EXAMPLE**
+now that we have a list we can start with a good username of service or user etc
+hydra -l service -P /usr/share/metasploit-framework/data/wordlists/unix_users.txt <ip> ftp 
+**We can see the list we got from smtp can help with brute force attacks**
+
 
