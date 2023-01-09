@@ -1,0 +1,8 @@
+nmap -T4 -PA -sC -sV -p 1-10000 <ip> -oX (file name) this will scan and output the results to a file, then you can import this file to msfconsole for a comprehensive view 
+
+nmap -sU for UDP ports
+
+nc -nv <IP> is good if you dont get any service info in your NMAP scan you can try to grab the banner manually 
+nmap -sV --script=banner <ip> 
+Manual banner grabbing is also used for when you have a bind shell set up on the target
+
