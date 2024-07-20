@@ -5,3 +5,4 @@ get <file>
 echo "exampleuser" > users
 nmap <ip> --script ftp-brute --script-args userdb=/root/users -p 21
 nmap <ip> -p 21 --script ftp-anon (or try logging into FTP server with username 'anonymous' and then blank password)
+sudo nmap -sV -p21 -sC -A 10.129.14.136 **The default script scan is based on the services' fingerprints, responses, and standard ports. Once Nmap has detected the service, it executes the marked scripts one after the other, providing different information. For example, the ftp-anon NSE script checks whether the FTP server allows anonymous access. If so, the contents of the FTP root directory are rendered for the anonymous user.**
